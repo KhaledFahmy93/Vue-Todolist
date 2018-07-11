@@ -5,7 +5,7 @@
                  v-bind:task="list.task" v-bind:done="list.done">
                   <input  :checked='!list.done'    class="toggle" type="checkbox">
                   <label>{{ list.task }}</label>
-                  <button class="destroy" @click='deleteitem()'>   destroy </button>
+                  <button class="destroy" @click='deleteitem(list)'>   destroy </button>
       </div>
     </div>
 </template>
@@ -37,21 +37,21 @@ import axios from 'axios';
     },
     
 	methods:{
-		 deleteitem: function (){
-			console.log('this');
+		 deleteitem: function (list){
 			
-		// 	let  index = this.lists.indexOf(task);
-		// 	let x = this ;
-		// 	 axios.post("http://127.0.0.1:8000/api/tasks/"+task.id+"/delete")
-        // .then(function (response) {
-		//  if(response.request.response){
-		// 	 x.lists.splice(index,1);
-		//  } 
+			
+			let  index = this.lists.indexOf(list.id);
+			let x = this ;
+			 axios.post("http://127.0.0.1:8000/api/tasks/"+list.id+"/delete")
+        .then(function (response) {
+		 if(response.request.response){
+			 x.lists.splice(index,1);
+		 } 
         
-        // })
-        // .catch(function(error){
-        //   console.log(error)
-        // });
+        })
+        .catch(function(error){
+          console.log(error)
+        });
 
 		 }
 	},
