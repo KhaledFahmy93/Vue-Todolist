@@ -3,30 +3,30 @@
   <div id="app">
   
         <section class="todoapp">
-                <header class="header"> 
-						<tasks   v-bind:newtask="newtask"> </tasks>
-				</header>
-                <section class="main" >
-                  <input class="toggle-all" id="toggle-all" type="checkbox" >
+				 <header class="header">
+                  <h1>todos</h1>
                   
+                   <addtask> </addtask>	 
+					  <router-view></router-view>
+
+                </header>
+
+                <section class="main" >
                   <ul class="todo-list" id='lists'>
-					  <input class="new-todo" autocomplete="off" placeholder="What needs to be"  v-model="newtask">
-                    <button @click="submit" type='submit' id="submit"> submit</button>
-      
-					  <router-view></router-view>	 
                     <li class="todo">
                       <input class="edit" type="text">
                     </li>
                   </ul>
                 </section>
                 <footer class="footer">
+					<span class="todo-count">
+                    	<strong>1</strong> item left
+					</span>
                   <ul class="filters">
-					  
-						<li><router-link :to="{ name: 'tasks' }"   v-bind:newtask="newtask">ALL  </router-link></li>
-					
+						<li><router-link :to="{ name: 'tasks' }"   >ALL  </router-link></li>
 						<li><router-link to="/done" >done</router-link></li>
 						<li><router-link to="/notdone"> notdone </router-link></li>
-							
+						
                   </ul>
 						<button class="clear-completed">
 							Clear completed
@@ -49,7 +49,7 @@ import tasks from './components/tasks.vue' ;
 import addtask from './components/addtask.vue' ;
 
 import axios from 'axios'; 
-
+import {bus} from './main';
 export default {
   name: 'app',
   components: {
@@ -57,34 +57,18 @@ export default {
     tasks ,
     done ,
 	notdone , 
-	
+	addtask
   } ,
   
   
   data(){
 	  return{
-		  message : '' , 
-		  newtask : ''
+		  message : '' ,  
 	  }
   },
 	methods: {
-        submit(){
-            let x= this ;
-            // let obj =   {'task':this.newtask ,'done' : 0} ;
-            // axios.post('http://127.0.0.1:8000/api/tasks/new',obj) 
-            //     .then(function (response) {
-            //         console.log(x.newtask );
-            //          console.log("success");
-                     
-            //     })
-            //     .catch(function (error) {
-            //         console.log('failed');
-            //     });   
 	},
 	
-	},
-	
-  
 }
 </script>
 

@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import tasks  from './components/tasks.vue' 
 import done from './components/done.vue'
 import notdone from './components/notdone.vue'
-import HelloWorld from './components/HelloWorld.vue'
+
 
 
 
@@ -12,9 +12,10 @@ const routes = [
        {path: '/tasks'  , component: tasks , name : 'tasks'} ,
        {path: '/done'  , component: done},
        {path: '/notdone'  , component: notdone},
-       {path: '/hello'  , component: HelloWorld}
+
       ];
   
+
 
 
 const router = new VueRouter(
@@ -24,6 +25,24 @@ const router = new VueRouter(
 
 Vue.use(VueRouter);
 
+
+  export default({
+  data: function(){
+    return {
+      name : "khaled"
+    }
+  },
+  methods  : {
+    deleteTask: function(){
+      alert("sssssssssssssss")
+    }
+  }
+
+});
+
+
+
+export const bus = new Vue();
 
 new Vue({
   render: h => h(App) , 

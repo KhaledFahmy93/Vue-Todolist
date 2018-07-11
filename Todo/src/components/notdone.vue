@@ -2,9 +2,9 @@
    <div class=''>
       <div class='view'  v-for="list in lists" v-bind:key="list.id" v-bind:id="list.id" 
                  v-bind:task="list.task" v-bind:done="list.done">
-                  <input class="toggle" type="checkbox">
+                  <input class="toggle" :checked='!list.done'   type="checkbox">
                   <label>{{ list.task }}</label>
-                    <button class="destroy"></button>
+                      <button class="destroy"  @click='deleteitem(list)' >delete</button>
       </div>
     </div>
 </template>
